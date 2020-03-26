@@ -1,10 +1,10 @@
 package io.ioco.invoiceapi.entities;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,7 +23,6 @@ public class Invoice {
 	private String client;
 	private Long vatRate;
 	private Date invoiceDate;
-	//@OneToMany
 	//@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "invoice", fetch = FetchType.EAGER)
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<LineItem> lineItems;
@@ -72,24 +71,26 @@ public class Invoice {
 		this.invoiceDate = invoiceDate;
 	}
 	
-	public BigDecimal getSubtotal() {
-		List<BigDecimal> prices = lineItems.stream()
+	public BigDecimal getSubtotal() {		
+		BigDecimal result  = lineItems.stream()
 				.map(p -> p.getUnitPrice().multiply(new BigDecimal(p.getQuantity())))
-				.collect(Collectors.toList());	
-				
-		BigDecimal result = prices.stream()
-		        .reduce(BigDecimal.ZERO, BigDecimal::add);
+				.reduce(BigDecimal.ZERO, BigDecimal::add);
 		
+		result = result.setScale(2, RoundingMode.HALF_UP);
 		return result;
 	}
 	
 	public BigDecimal getVat() {
-		return getSubtotal().multiply(new BigDecimal(vatRate))
+		BigDecimal result = getSubtotal().multiply(new BigDecimal(vatRate))
 				.divide(new BigDecimal(100));
+		result = result.setScale(2, RoundingMode.HALF_UP);
+		return result;
 	}
 	
 	public BigDecimal getTotal() {
-		return getSubtotal().add(getVat());
+		BigDecimal result = getSubtotal().add(getVat());
+		result = result.setScale(2, RoundingMode.HALF_UP);
+		return result;
 	}
 
 	public List<LineItem> getLineItems() {

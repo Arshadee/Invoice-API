@@ -39,10 +39,7 @@ public class InvoiceService {
 	public void addLineItem(Long id, LineItem lineItem) {
 		Invoice invoice = invoiceRepository.findById(id).orElse(null);
 		if(invoice == null) return;
-		//lineItem.setInvoice(invoice);
-		//invoice.addLineItem(lineItem);
 		invoice.addLineItem(lineItemService.addLineItem(lineItem));
-		//invoiceRepository.save(invoice);
 		System.out.println(invoiceRepository.save(invoice));
 		System.out.println(invoice.getLineItems());
 		
