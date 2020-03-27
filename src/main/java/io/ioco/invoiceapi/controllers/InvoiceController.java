@@ -22,7 +22,7 @@ public class InvoiceController {
 	InvoiceService invoiceService;
 	
 	@RequestMapping("/invoices")
-	public List<Invoice> getAllTopics() {
+	public List<Invoice> getAllInvoices() {
 		return invoiceService.viewAllInvoices();
 	}
 	
