@@ -110,6 +110,55 @@ public class Invoice {
 		return "Invoice [id=" + id + ", client=" + client + ", vatRate=" + vatRate + ", invoiceDate=" + invoiceDate
 				+ ", lineItems=" + lineItems + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((invoiceDate == null) ? 0 : invoiceDate.hashCode());
+		result = prime * result + ((lineItems == null) ? 0 : lineItems.hashCode());
+		result = prime * result + ((vatRate == null) ? 0 : vatRate.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Invoice other = (Invoice) obj;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (invoiceDate == null) {
+			if (other.invoiceDate != null)
+				return false;
+		} else if (!invoiceDate.equals(other.invoiceDate))
+			return false;
+		if (lineItems == null) {
+			if (other.lineItems != null)
+				return false;
+		} else if (!lineItems.equals(other.lineItems))
+			return false;
+		if (vatRate == null) {
+			if (other.vatRate != null)
+				return false;
+		} else if (!vatRate.equals(other.vatRate))
+			return false;
+		return true;
+	}
 	
 	
 }
