@@ -31,6 +31,11 @@ public class InvoiceController {
 		return invoiceService.viewInvoice(id);
 	}
 	
+	@RequestMapping("/invoices/client/{client}")
+	public Invoice getInvoiceByClient(@PathVariable String client) {
+		return invoiceService.viewInvoice(client);
+	}
+	
 	@RequestMapping(method=RequestMethod.POST, value="/invoices")
 	public void addInvoice(@RequestBody Invoice invoice) {
 		invoiceService.addInvoice(invoice);

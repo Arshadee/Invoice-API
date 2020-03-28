@@ -32,6 +32,10 @@ public class InvoiceService {
 		return invoiceRepository.findById(id).orElse(null);
 	}
 	
+	public Invoice viewInvoice(String client) {
+		return invoiceRepository.findByClient(client);
+	}
+	
 	public void addInvoice(Invoice invoice) {
 		invoiceRepository.save(invoice);
 	}
