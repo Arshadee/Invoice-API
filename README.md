@@ -33,6 +33,9 @@ POST http://localhost:8080/invoices
 Gets a specific invoice by invoice Id  
 GET http://localhost:8080/invoices/{id}
 
+Gets a specific invoice by client
+GET http://localhost:8080/invoices/client/{client}"
+
 Adds the line items for a specific Invoice,
 search for by Invoice Id  
 POST http://localhost:8080/invoices/{id}/lineItems
