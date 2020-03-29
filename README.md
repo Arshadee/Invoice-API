@@ -1,6 +1,15 @@
 # SpringBoot-Invoice-API
 ## Assessment for IOCO
 
+## Clone the application
+
+https://github.com/Arshadee/Invoice-API.git
+
+## Run the application
+
+The application will start running at  
+http://localhost:8080
+
 ### Explore REST API
 
 The Application defines the following
