@@ -15,7 +15,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
@@ -77,10 +76,7 @@ public class InvoiceApiIntegrationTest {
 		assertThat(fromDbInvoice2.getSubtotal()).isEqualTo(expectedSubTotal2);	
 		assertThat(fromDbInvoice2.getVat()).isEqualTo(expectedVat2);
 		assertThat(fromDbInvoice2.getTotal()).isEqualTo(expectedTotal2);
-		
-		
-		
-		
+	
 	}
 	
 	

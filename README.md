@@ -5,9 +5,18 @@
 
 https://github.com/Arshadee/Invoice-API.git
 
-## Run the application
+## Build / Compile the application using maven
+In command-Line / term navigate to the project folder  
+and run : ** mvn clean install **  
 
-The application will start running at  
+## Run the application  
+In command-Line / term navigate to the project folder  
+and run : ** java -jar target/invoice-api-0.0.1-SNAPSHOT.jar **  
+
+Alternatively, you can run the app without packaging it using  
+** mvn spring-boot:run **  
+
+The application will start running at    
 http://localhost:8080
 
 ### Explore REST API
