@@ -7,7 +7,7 @@ https://github.com/Arshadee/Invoice-API.git
 
 ## Build / Compile the application using maven
 In command-Line / term navigate to the project folder  
-and run : ** mvn clean install **  
+and run : **mvn clean install**  
 
 ## Run the application  
 In command-Line / term navigate to the project folder  
