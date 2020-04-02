@@ -1,5 +1,6 @@
 package io.ioco.invoiceapi.controllers;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -46,9 +47,22 @@ public class InvoiceController {
 		return new ResponseEntity<Invoice>(invoice, HttpStatus.OK);
 	}
 	
+	@SuppressWarnings("finally")
 	@RequestMapping(method=RequestMethod.POST, value="/invoices")
-	public void addInvoice(@RequestBody Invoice invoice) {
-		invoiceService.addInvoice(invoice);
+	public ResponseEntity<Invoice> addInvoice(@RequestBody Invoice invoice) {
+		HttpStatus status = HttpStatus.OK;
+		try {
+			invoiceService.addInvoice(invoice);
+			//used to test error 500 internal error
+			//throw new IOException("IOException test"); 
+		}catch(Exception e) {
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
+			e.printStackTrace();
+		}
+		finally{
+			return new ResponseEntity<Invoice>(status);
+		}
+		 
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/invoices/{id}/addlineitem")
