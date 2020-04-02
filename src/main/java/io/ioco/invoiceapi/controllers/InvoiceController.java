@@ -55,6 +55,10 @@ public class InvoiceController {
 			invoiceService.addInvoice(invoice);
 			//used to test error 500 internal error
 			//throw new IOException("IOException test"); 
+			/*note if data sent to be persisted is incorrect
+			  http status code 400 Bad request is returned automatically
+			  to test this I populated vatRate with a String value
+			*/
 		}catch(Exception e) {
 			status = HttpStatus.INTERNAL_SERVER_ERROR;
 			e.printStackTrace();
