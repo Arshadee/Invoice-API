@@ -62,8 +62,11 @@ public class InvoiceApiIntegrationTest {
 		invoiceController.addInvoice(expectedInvoice2);
 		
 		
-		Invoice fromDbInvoice1 = invoiceRepository.findById(expectedInvoice1.getId()).orElse(null); 
-		Invoice fromDbInvoice2 = invoiceRepository.findById(expectedInvoice2.getId()).orElse(null); 
+		//Invoice fromDbInvoice1 = invoiceRepository.findById(expectedInvoice1.getId()).orElse(null); 
+		//Invoice fromDbInvoice2 = invoiceRepository.findById(expectedInvoice2.getId()).orElse(null); 
+		
+		Invoice fromDbInvoice1 = invoiceController.getInvoice(expectedInvoice1.getId());
+		Invoice fromDbInvoice2 = invoiceController.getInvoice(expectedInvoice2.getId());
 		
 		assertThat(fromDbInvoice1.getClient()).isEqualTo(expectedInvoice1.getClient());	
 		assertThat(fromDbInvoice1.getLineItems().size()).isEqualTo(expectedInvoice1.getLineItems().size());
